@@ -7,6 +7,7 @@ from haystack.components.rankers.meta_field import MetaFieldRanker
 from haystack.components.rankers.meta_field_grouping_ranker import MetaFieldGroupingRanker
 from haystack.components.rankers.sentence_transformers_diversity import SentenceTransformersDiversityRanker
 from haystack.components.rankers.transformers_similarity import TransformersSimilarityRanker
+from haystack.components.rankers.llm_ranker import LLMRanker
 
 __all__ = [
     "LostInTheMiddleRanker",
@@ -14,4 +15,5 @@ __all__ = [
     "MetaFieldGroupingRanker",
     "SentenceTransformersDiversityRanker",
     "TransformersSimilarityRanker",
+    "LLMRanker",
 ]
