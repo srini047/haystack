@@ -1,0 +1,180 @@
+---
+title: "Component Test Suite"
+id: test-components
+slug: "/test-components"
+description: "A dedicated page exercising every display component used across the Haystack documentation site. Used for automated Playwright regression testing."
+---
+
+import ClickableImage from "@site/src/components/ClickableImage";
+import YoutubeEmbed from "@site/src/components/YoutubeEmbed";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Component Test Suite
+
+This page exercises every display component used across the Haystack documentation site. It exists solely for automated Playwright regression testing.
+
+## Admonitions
+
+:::tip[Tip Admonition]
+This is a **tip** admonition. It provides helpful hints and shortcuts to the reader.
+:::
+
+:::note[Note Admonition]
+This is a **note** admonition. It provides general informational context.
+:::
+
+:::info[Info Admonition]
+This is an **info** admonition. It highlights supplementary information.
+:::
+
+:::warning[Warning Admonition]
+This is a **warning** admonition. It alerts the reader to important considerations before proceeding.
+:::
+
+:::caution[Caution Admonition]
+This is a **caution** admonition. It flags potential pitfalls or edge cases to be aware of.
+:::
+
+:::danger[Danger Admonition]
+This is a **danger** admonition. It marks critical warnings about destructive or irreversible actions.
+:::
+
+## Code Blocks
+
+### Shell (single-line)
+
+```shell
+pip install haystack-ai
+```
+
+### Python (multi-line)
+
+```python
+from haystack import Pipeline, Document
+from haystack.document_stores.in_memory import InMemoryDocumentStore
+
+document_store = InMemoryDocumentStore()
+document_store.write_documents(
+    [
+        Document(content="My name is Jean and I live in Paris."),
+        Document(content="My name is Mark and I live in Berlin."),
+    ],
+)
+
+pipeline = Pipeline()
+print(pipeline)
+```
+
+### YAML
+
+```yaml
+components:
+  retriever:
+    type: haystack.components.retrievers.InMemoryBM25Retriever
+    init_parameters:
+      document_store: document_store
+pipelines:
+  query:
+    - retriever
+```
+
+## Tabs
+
+<Tabs>
+  <TabItem value="openai" label="OpenAI" default>
+
+  ```python
+  from haystack.components.generators.chat import OpenAIChatGenerator
+  llm = OpenAIChatGenerator(model="gpt-4o-mini")
+  ```
+
+  </TabItem>
+  <TabItem value="anthropic" label="Anthropic">
+
+  ```python
+  from haystack_integrations.components.generators.anthropic import AnthropicChatGenerator
+  llm = AnthropicChatGenerator(model="claude-3-5-sonnet-20241022")
+  ```
+
+  </TabItem>
+  <TabItem value="google" label="Google">
+
+  ```python
+  from haystack_integrations.components.generators.google_ai import GoogleAIGeminiChatGenerator
+  llm = GoogleAIGeminiChatGenerator(model="gemini-2.0-flash")
+  ```
+
+  </TabItem>
+</Tabs>
+
+## Tables
+
+### Standard Table
+
+| Component | Type | Description |
+| --- | --- | --- |
+| `InMemoryDocumentStore` | Document Store | Stores documents in memory for fast prototyping. |
+| `OpenAIChatGenerator` | Generator | Generates chat completions using OpenAI models. |
+| `InMemoryBM25Retriever` | Retriever | Retrieves documents with BM25 ranking. |
+
+### Key-Value Table
+
+<div className="key-value-table">
+
+|  |  |
+| --- | --- |
+| **Mandatory init variables** | `document_store`: A Haystack Document Store instance |
+| **Optional init variables** | `top_k`: Number of documents to retrieve (default: 10) |
+
+</div>
+
+## ClickableImage
+
+<ClickableImage
+  src="/img/83f686b-Pipeline_Illustrations_1_1.png"
+  alt="Pipeline architecture diagram showing components arranged in parallel branches"
+  size="large"
+/>
+
+## YouTube Embed
+
+<YoutubeEmbed videoId="SxAwyeCkguc" title="Introduction to Haystack Pipelines" />
+
+## Heading Hierarchy
+
+### H3 Heading Level
+
+#### H4 Heading Level
+
+These headings verify the full heading hierarchy renders correctly.
+
+## Inline Formatting
+
+This paragraph includes **bold text**, *italic text*, `inline code`, and ~~strikethrough text~~. It also contains a [link to the Introduction page](intro.mdx).
+
+## Lists
+
+### Ordered List
+
+1. Install Haystack: `pip install haystack-ai`
+2. Create a Document Store instance
+3. Write documents to the store
+4. Build and run a pipeline
+
+### Unordered List
+
+- Components are the building blocks of Haystack pipelines
+- Pipelines connect components into directed multigraphs
+- Document Stores persist and retrieve documents at scale
+
+### Nested List
+
+- Core concepts
+  - Components
+  - Pipelines
+  - Document Stores
+- Integrations
+  - OpenAI
+  - Anthropic
+  - Hugging Face

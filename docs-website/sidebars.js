@@ -714,5 +714,10 @@ export default {
         'development/external-integrations-development',
       ],
     },
+    {
+      type: 'doc',
+      id: 'test-components',
+      label: 'Component Test Suite'
+    },
   ],
 };
